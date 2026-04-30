@@ -1,4 +1,4 @@
-**GSE114725_VariantCalling_Python**
+**VariantCalling_Pipeline_TumorNormal**
 
 Python-based pipeline for tumor–normal paired variant calling, annotation, and visualization.
 
@@ -6,8 +6,7 @@ This repository provides a modular and reproducible workflow for detecting, filt
 
 **Project Scope**
 
-This project focuses on building a flexible and reusable variant calling framework rather than analyzing a single fixed dataset.
-The pipeline is designed to be easily applied to tumor–normal paired sequencing datasets from public repositories or custom experiments.
+A modular and reproducible Python-based pipeline for variant calling, filtering, annotation, and visualization of next-generation sequencing (NGS) data from tumor–normal paired samples.
 
 **Dataset Information**
 
@@ -21,11 +20,11 @@ The pipeline is designed to be easily applied to tumor–normal paired sequencin
 
 **Research Objective**
 
-To identify high-confidence somatic and germline variants in tumor–normal paired samples, annotate their functional impact, and summarize mutational patterns using reproducible computational workflows.
+To identify and characterize candidate somatic and germline variants in tumor–normal paired samples, followed by functional annotation and visualization of mutational patterns using a reproducible computational workflow.
 
 **Tools & Packages**
 
-- Python 3.8+
+- Python ≥ 3.8
 - pysam – BAM file processing
 - PyVCF / cyvcf2 – VCF parsing
 - pandas, numpy – Data manipulation
@@ -39,7 +38,7 @@ To identify high-confidence somatic and germline variants in tumor–normal pair
 
 - Alignment of raw FASTQ files (if required)
 
-- BAM file generation, sorting, and indexing
+- Sorting and indexing BAM files
 
 2. **Variant Calling (02_VariantCalling.py)**
 

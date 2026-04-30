@@ -24,7 +24,7 @@ To identify and characterize candidate somatic and germline variants in tumor–
 
 **Tools & Packages**
 
-- Python ≥ 3.8
+- Programming Language - Python ≥ 3.8
 - pysam – BAM file processing
 - PyVCF / cyvcf2 – VCF parsing
 - pandas, numpy – Data manipulation

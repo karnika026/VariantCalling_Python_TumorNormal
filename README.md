@@ -1,6 +1,9 @@
-**VariantCalling_Pipeline_TumorNormal**
+**Pipeline Summary**
 
-Python-based pipeline for tumor–normal paired variant calling, annotation, and visualization.
+FASTQ → QC → Alignment → BAM processing → Variant calling → Filtering → Annotation → Visualization
+
+**VariantCalling_Pipeline_TumorNormal**
+Hybrid pipeline (Bash + Python) for tumor–normal paired variant calling, annotation, and visualization.
 
 This repository provides a modular and reproducible workflow for detecting, filtering, annotating, and visualizing somatic and germline variants from next-generation sequencing (NGS) data. The project integrates standard variant calling tools with Python-based downstream analysis and visualization.
 
@@ -24,17 +27,28 @@ To identify and characterize candidate somatic and germline variants in tumor–
 
 **Tools & Packages**
 
-- Programming Language - Python ≥ 3.8
-- pysam – BAM file processing
-- PyVCF / cyvcf2 – VCF parsing
-- pandas, numpy – Data manipulation
-- matplotlib, seaborn – Visualization of variant distributions
-- bcftools / samtools (system calls) – Variant calling and BAM processing
+### Programming Language
+- Python ≥ 3.8
+
+### Python Libraries
+- pysam – BAM/SAM file processing
+- cyvcf2 / PyVCF – VCF parsing
+- pandas, numpy – data manipulation
+- matplotlib, seaborn – data visualization
+
+### Bioinformatics Tools
+- FastQC – sequencing quality control
+- BWA-MEM – read alignment
+- SAMtools – BAM processing, sorting, indexing
+- bcftools – variant manipulation and filtering
+- GATK – variant calling and post-processing
+All command-line tools were executed in a Linux environment using WSL2
+
 
 
 **Analysis Workflow**
 
-1. **Preprocessing (01_Preprocessing.py)**
+1. **Preprocessing (01_Preprocessing.sh)**
 
 - Alignment of raw FASTQ files (if required)
 
@@ -77,7 +91,7 @@ To identify and characterize candidate somatic and germline variants in tumor–
 **Repository Structure**
 ```
 ├── scripts/
-│   ├── 01_Preprocessing.py
+│   ├── 01_Preprocessing.sh
 │   ├── 02_VariantCalling.py
 │   ├── 03_Filtering.py
 │   ├── 04_Annotation.py
@@ -92,30 +106,20 @@ To identify and characterize candidate somatic and germline variants in tumor–
 └── README.md
 ```
 
-**Example Outputs**
+## Outputs
 
 The pipeline generates:
+
 - Raw and filtered VCF files
 - Annotated variant tables
-- Summary statistics:
+- QC metrics (alignment statistics, flagstat reports)
+- Variant distribution plots
+- Mutation summaries (SNVs, indels, gene-level variation)
 
-   - Total variant counts
-
-   - SNV vs Indel distribution
-
-   - Variant quality metrics
-
-- Visualization plots:
-
-  - Variant type distribution
-
-  - Mutation burden
-
-  - Top mutated genes
 
 **Example Results (Demonstration)**
 
-(Results will vary depending on input dataset)
+(These values are illustrative and will vary depending on dataset, coverage, and reference genome)
 
 - Total variants detected: ~10,000
 
@@ -123,17 +127,7 @@ The pipeline generates:
 
 - Genes affected: ~1,000+
 
-**Key Outputs**
 
-- High-confidence VCF files (somatic and germline)
-
-- Annotated variant tables
-
-- Mutational summaries and visualizations
-
-- Per-sample variant distributions
-
-- Plots highlighting top mutated genes and variant types
 
 **Limitations**
 
@@ -160,6 +154,16 @@ The pipeline generates:
 - Raw sequencing data should be obtained from public repositories or user datasets
 
 - Processed outputs are generated and stored in data/processed/
+
+**Computational Environment**
+
+This pipeline was developed and executed using:
+
+- Windows 11
+- Windows Subsystem for Linux (WSL2)
+- Ubuntu Linux environment
+
+This setup enables execution of standard Linux-based bioinformatics tools on a Windows system.
 
 
 
